@@ -1,0 +1,85 @@
+{
+  "examData": [
+    {
+      "id": "cs101",
+      "name": "Programming in Python",
+      "code": "CS101",
+      "duration": 15,
+      "totalMarks": 40,
+      "questions": [
+        { "id": 1, "text": "Which of the following is an immutable data type in Python?", "options": ["List", "Dictionary", "Set", "Tuple"], "answer": 3, "solution": "In Python, Tuples are immutable, meaning their elements cannot be changed after they are created. Lists, Dictionaries, and Sets are mutable." },
+        { "id": 2, "text": "What is the output of `print(2 ** 3 ** 2)`?", "options": ["64", "512", "4096", "None of the above"], "answer": 1, "solution": "Exponentiation `**` is evaluated from right to left in Python. So, `2 ** 3 ** 2` is evaluated as `2 ** (3 ** 2)` -> `2 ** 9` -> `512`." },
+        { "id": 3, "text": "Which keyword is used to create a function in Python?", "options": ["function", "def", "fun", "create"], "answer": 1, "solution": "The `def` keyword is used to declare a function in Python." },
+        { "id": 4, "text": "What does the `len()` function do?", "options": ["Returns the memory size of an object", "Returns the number of items in an object", "Returns the largest item in an iterable", "Converts a string to a list"], "answer": 1, "solution": "The `len()` function returns the length (number of items) of an object like a string, list, tuple, etc." }
+      ]
+    },
+    {
+      "id": "ma101",
+      "name": "Mathematics for Data Science I",
+      "code": "MA101",
+      "duration": 20,
+      "totalMarks": 40,
+      "questions": [
+        { "id": 1, "text": "What is the derivative of $f(x) = e^x$?", "options": ["$x \\cdot e^{x-1}$", "$e^x$", "$\\ln(x)$", "$\\frac{1}{x}$"], "answer": 1, "solution": "The exponential function $e^x$ is unique because its derivative is exactly itself. Therefore, $\\frac{d}{dx} e^x = e^x$." },
+        { "id": 2, "text": "What is the determinant of an identity matrix of size $n \\times n$?", "options": ["$0$", "$n$", "$1$", "$n!$"], "answer": 2, "solution": "The determinant of any identity matrix $I_n$ is the product of its diagonal elements, which are all $1$. Thus, $\\det(I) = 1$." },
+        { "id": 3, "text": "If two events $A$ and $B$ are independent, what is $P(A \\cap B)$?", "options": ["$P(A) + P(B)$", "$P(A) - P(B)$", "$P(A) \\cdot P(B)$", "$\\frac{P(A)}{P(B)}$"], "answer": 2, "solution": "By definition of independent events, the probability of both occurring is the product of their individual probabilities: $P(A \\cap B) = P(A)P(B)$." },
+        { "id": 4, "text": "Evaluate the limit: $$\\lim_{x \\to 0} \\frac{\\sin(x)}{x}$$", "options": ["$0$", "$1$", "$\\infty$", "Undefined"], "answer": 1, "solution": "This is a fundamental trigonometric limit. As $x$ approaches $0$, the value of $\\frac{\\sin(x)}{x}$ approaches $1$." }
+      ]
+    },
+    {
+      "id": "ct101",
+      "name": "Computational Thinking",
+      "code": "CT101",
+      "duration": 10,
+      "totalMarks": 30,
+      "questions": [
+        { "id": 1, "text": "Which of these is NOT a pillar of computational thinking?", "options": ["Decomposition", "Pattern Recognition", "Memorization", "Abstraction"], "answer": 2, "solution": "The 4 pillars of computational thinking are Decomposition, Pattern Recognition, Abstraction, and Algorithmic Thinking. Memorization is not one of them." },
+        { "id": 2, "text": "What is a pseudo-code?", "options": ["A programming language", "A way to write algorithms using English-like statements", "A compiler error", "Machine level code"], "answer": 1, "solution": "Pseudo-code is a detailed yet readable description of what a computer program or algorithm must do, expressed in a formally-styled natural language rather than in a programming language." },
+        { "id": 3, "text": "Which sorting algorithm repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order?", "options": ["Merge Sort", "Quick Sort", "Bubble Sort", "Insertion Sort"], "answer": 2, "solution": "Bubble Sort works by repeatedly swapping the adjacent elements if they are in the wrong order." }
+      ]
+    }
+  ],
+  "mockExams": [
+    {
+      "id": "mock_q1_2024",
+      "name": "Quiz 1 - 2024",
+      "examCode": "MOCK-Q1-24",
+      "examType": "Mock Practice",
+      "subjectIds": ["cs101", "ma101"],
+      "submissionRule": "anytime" 
+    },
+    {
+      "id": "mock_q2_2025_sept",
+      "name": "Quiz 2 - 2025 Sept",
+      "examCode": "MOCK-Q2-25",
+      "examType": "Mock Practice",
+      "subjectIds": ["cs101", "ct101"],
+      "submissionRule": "last_10_mins"
+    },
+    {
+      "id": "mock_end_term",
+      "name": "End Term Exam",
+      "examCode": "END-TERM-25",
+      "examType": "Term Exam",
+      "subjectIds": ["cs101", "ma101", "ct101"],
+      "submissionRule": "auto_only"
+    },
+    {
+      "id": "mock_q1_2025_aug",
+      "name": "Quiz 1 - 2025 Aug",
+      "examCode": "MOCK-Q1-25A",
+      "examType": "Quiz",
+      "subjectIds": ["ma101", "ct101"],
+      "submissionRule": "anytime"
+    },
+    {
+      "id": "mock_q1_mar",
+      "name": "Quiz 1 - Mar",
+      "examCode": "MOCK-Q1-MAR",
+      "examType": "Quiz",
+      "subjectIds": ["cs101"],
+      "submissionRule": "auto_only"
+    }
+  ],
+  "whiteboardData": {}
+}
