@@ -246,11 +246,19 @@ const WhiteboardOverlay = ({ isEnabled, qId, tool, color, strokeWidth, elementsM
       }
   };
 
-  const handleMouseDown = (e) => {
+  const getCoordinates = (e) => {
+      if (e.touches && e.touches.length > 0) {
+          return { clientX: e.touches[0].clientX, clientY: e.touches[0].clientY };
+      }
+      return { clientX: e.clientX, clientY: e.clientY };
+  };
+
+  const handlePointerDown = (e) => {
       if (tool === 'pointer') return;
       const rect = canvasRef.current.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+      const coords = getCoordinates(e);
+      const x = coords.clientX - rect.left;
+      const y = coords.clientY - rect.top;
       setIsDrawing(true);
 
       // Generate a static seed for the shape immediately on mousedown
@@ -263,11 +271,12 @@ const WhiteboardOverlay = ({ isEnabled, qId, tool, color, strokeWidth, elementsM
       }
   };
 
-  const handleMouseMove = (e) => {
+  const handlePointerMove = (e) => {
       if (!isDrawing || tool === 'pointer') return;
       const rect = canvasRef.current.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+      const coords = getCoordinates(e);
+      const x = coords.clientX - rect.left;
+      const y = coords.clientY - rect.top;
 
       if (tool === 'pen' || tool === 'eraser') {
           setCurrentPath(prev => ({ ...prev, points: [...prev.points, {x, y}] }));
@@ -276,7 +285,7 @@ const WhiteboardOverlay = ({ isEnabled, qId, tool, color, strokeWidth, elementsM
       }
   };
 
-  const handleMouseUp = () => {
+  const handlePointerUp = () => {
       if (tool === 'pointer' || !isDrawing) return;
       setIsDrawing(false);
       if (currentPath) {
@@ -293,11 +302,15 @@ const WhiteboardOverlay = ({ isEnabled, qId, tool, color, strokeWidth, elementsM
           {/* Canvas covers the whole question panel */}
           <canvas 
               ref={canvasRef}
-              onMouseDown={handleMouseDown}
-              onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUp}
-              onMouseOut={handleMouseUp}
-              className={`w-full h-full absolute inset-0 ${tool === 'pointer' ? 'pointer-events-none' : 'pointer-events-auto cursor-crosshair'}`}
+              onMouseDown={handlePointerDown}
+              onMouseMove={handlePointerMove}
+              onMouseUp={handlePointerUp}
+              onMouseOut={handlePointerUp}
+              onTouchStart={handlePointerDown}
+              onTouchMove={handlePointerMove}
+              onTouchEnd={handlePointerUp}
+              onTouchCancel={handlePointerUp}
+              className={`w-full h-full absolute inset-0 touch-none ${tool === 'pointer' ? 'pointer-events-none' : 'pointer-events-auto cursor-crosshair'}`}
           />
       </div>
   );
